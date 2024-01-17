@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1> Promises - .then .Catch </h1>
+        <script>
+
+            // Using then catch
+
+            console.log("Start");
+
+            function f1(){
+                return new Promise((resolve, reject) => {
+                    setTimeout(()=>{
+                    console.log("Half completed");
+                    reject();
+                }, 2000 )                    
+                })
+            }
+
+            function f2(){
+                 console.log("Fully Completed");
+            }
+
+            f1().then(() => {
+                console.log("Fully Completed");
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1> Callback </h1>
+        <script>
+
+            console.log("Start");
+
+            function f1(callback){
+                setTimeout(()=>{
+                    console.log("Half completed")
+                    callback();
+                }, 2000 )
+            }
+
+            function f2(){
+                 console.log("Fully Completed")
+            }
+
+            f1(f2);
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1> Using Promises </h1>
+
+        <h3> A Cat Fact : </h3> <h4 id="fact"> </h4>
+        
+        <!-- For Importing the axios libarary -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js" integrity="sha512-TjBzDQIDnc6pWyeM1bhMnDxtWH0QpOXMcVooglXrali/Tj7W569/wd4E8EDjk1CwOAOPSJon1VfcEt1BI4xIrA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>        
+
+        <script>
+
+            function processData(data){
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                    resolve(" ||| " + data.fact + " ||| ");
+                }, 2000)
+                })
+            }
+
+            async function postProcess(x){
+                try {
+                    let r = await processData(x);
+                    document.getElementById("fact").innerHTML = r;
+                }
+                catch (err) {
+                    console.log(err)
+                }
+            }
+
+            axios.get("https://catfact.ninja/fact").then((r) => {
+                console.log(r.data);
+                postProcess(r.data);
+
+
+            }).catch((e) => {
+                console.log("rejected")   
+            })
+
+        </script>
+    </body>
+</html>
